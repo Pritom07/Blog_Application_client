@@ -69,10 +69,6 @@ const Navbar = ({
       title: "About",
       url: "/about",
     },
-    {
-      title: "Contact",
-      url: "/contact",
-    },
   ],
   auth = {
     login: { title: "Login", url: "/login" },
@@ -157,6 +153,9 @@ const Navbar = ({
                   </Accordion>
 
                   <div className="flex flex-col gap-3">
+                    <div>
+                      <ModeToggle />
+                    </div>
                     <Button asChild variant="outline">
                       <Link href={auth.login.url}>{auth.login.title}</Link>
                     </Button>
