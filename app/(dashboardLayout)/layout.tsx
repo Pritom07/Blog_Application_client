@@ -13,22 +13,23 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { Role } from "@/constants/roles";
+import { userServices } from "@/services/user.service";
 
-const dashboardLayout = ({
+const dashboardLayout = async ({
   adminSlot,
   userSlot,
 }: {
   adminSlot: React.ReactNode;
   userSlot: React.ReactNode;
 }) => {
-  const userInfo = {
-    role: "ADMIN",
-  };
+  const { data } = await userServices.getSession();
+  const userRole = data.user.role;
 
   return (
     <div>
       <SidebarProvider>
-        <AppSidebar userRole={userInfo.role} />
+        <AppSidebar userRole={userRole} />
         <SidebarInset>
           <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
             <SidebarTrigger className="-ml-1" />
@@ -52,7 +53,7 @@ const dashboardLayout = ({
           </header>
 
           <div className="mx-3 my-2">
-            {userInfo.role === "ADMIN" ? adminSlot : userSlot}
+            {userRole === Role.ADMIN ? adminSlot : userSlot}
           </div>
         </SidebarInset>
       </SidebarProvider>

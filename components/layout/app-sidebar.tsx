@@ -16,6 +16,7 @@ import { Button } from "../ui/button";
 import { adminRoutes } from "@/routes/adminRoutes";
 import { userRoutes } from "@/routes/userRoutes";
 import { admin_user_RoutesType } from "@/types/admin_user_RoutesType";
+import { Role } from "@/constants/roles";
 
 export function AppSidebar({
   userRole,
@@ -26,10 +27,10 @@ export function AppSidebar({
   let routes: Array<admin_user_RoutesType> = [];
 
   switch (userRole) {
-    case "ADMIN":
+    case Role.ADMIN:
       routes = adminRoutes;
       break;
-    case "USER":
+    case Role.USER:
       routes = userRoutes;
       break;
     default:
