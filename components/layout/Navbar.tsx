@@ -79,16 +79,10 @@ const Navbar = ({
   return (
     <section className={cn("py-4", className)}>
       <div className="container mx-auto">
-        {/* Desktop Menu */}
+        {/* Dasktop Menu */}
         <nav className="hidden items-center justify-between lg:flex">
           <div className="flex items-center gap-6">
-            {/* Logo */}
             <a href={logo.url} className="flex items-center gap-2">
-              {/* <img
-                src={logo.src}
-                className="max-h-8 dark:invert"
-                alt={logo.alt}
-              /> */}
               <span className="text-lg font-semibold tracking-tighter">
                 {logo.title}
               </span>
@@ -117,14 +111,7 @@ const Navbar = ({
         {/* Mobile Menu */}
         <div className="block lg:hidden">
           <div className="flex items-center justify-between">
-            {/* Logo */}
-            <a href={logo.url} className="flex items-center gap-2">
-              {/* <img
-                src={logo.src}
-                className="max-h-8 dark:invert"
-                alt={logo.alt}
-              /> */}
-            </a>
+            <a href={logo.url} className="flex items-center gap-2"></a>
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon">
@@ -134,13 +121,7 @@ const Navbar = ({
               <SheetContent className="overflow-y-auto">
                 <SheetHeader>
                   <SheetTitle>
-                    <a href={logo.url} className="flex items-center gap-2">
-                      {/* <img
-                        src={logo.src}
-                        className="max-h-8 dark:invert"
-                        alt={logo.alt}
-                      /> */}
-                    </a>
+                    <a href={logo.url} className="flex items-center gap-2"></a>
                   </SheetTitle>
                 </SheetHeader>
                 <div className="flex flex-col gap-6 p-4">

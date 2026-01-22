@@ -2,7 +2,7 @@ import { Navbar } from "@/components/layout/Navbar";
 
 const commonLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div>
+    <div className="px-1.5">
       <Navbar />
       {children}
     </div>
