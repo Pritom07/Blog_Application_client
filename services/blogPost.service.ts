@@ -30,7 +30,26 @@ export const blogPost = {
 
       const res = await fetch(url.toString(), config);
       const posts = await res.json();
-      return { data: posts, error: { message: null } };
+
+      if (posts.success === true) {
+        return { data: posts, error: { message: null } };
+      }
+
+      return { data: null, error: { message: "SOMETHING_WENT_WRONG" } };
+    } catch (err) {
+      return { data: null, error: { message: err } };
+    }
+  },
+
+  getPostById: async function (id: string) {
+    try {
+      const BACKEND_URL = env.BACKEND_URL;
+      const res = await fetch(`${BACKEND_URL}/posts/${id}`);
+      const data = await res.json();
+      if (data.success === true) {
+        return { data: data, error: { message: null } };
+      }
+      return { data: null, error: { message: "SOMETHING_WENT_WRONG" } };
     } catch (err) {
       return { data: null, error: { message: err } };
     }
