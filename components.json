@@ -1,5 +1,4 @@
 {
-  "$schema": "https://ui.shadcn.com/schema.json",
   "style": "new-york",
   "rsc": true,
   "tsx": true,
@@ -20,6 +19,7 @@
   },
   "registries": {
     "@shadcnblocks": "https://shadcnblocks.com/r/{name}.json",
-    "@cardcn": "https://cardcn.dev/r/{name}.json"
+    "@cardcn": "https://cardcn.dev/r/{name}.json",
+    "@thegridcn": "https://thegridcn.com/r/{name}.json"
   }
 }
