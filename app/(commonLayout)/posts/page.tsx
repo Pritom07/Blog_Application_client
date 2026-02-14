@@ -14,8 +14,6 @@ const BlogPages = () => {
       setError(error ? { message: error.message as string | null } : null);
     })();
   }, []);
-
-  console.log(posts, error);
   return (
     <div className="max-w-5xl mx-auto mt-10 px-4">
       <div className="overflow-x-auto rounded-xl border border-border shadow-md">

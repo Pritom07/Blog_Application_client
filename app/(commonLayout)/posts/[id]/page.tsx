@@ -1,6 +1,8 @@
 import { PostDetailsCard } from "@/components/modules/blogs/postDetailsCard";
 import { blogPost } from "@/services/blogPost.service";
+import { userServices } from "@/services/user.service";
 import { Post } from "@/types/postType";
+import { redirect } from "next/navigation";
 
 //// pre-render as static only 3 (SSG) and remaining all others are SSR
 export async function generateStaticParams() {
@@ -22,6 +24,10 @@ const Detail_Post_Page = async ({
   params: Promise<{ id: string }>;
 }) => {
   const { id } = await params;
+  const { data: session } = await userServices.getSession();
+  if (!session) {
+    redirect("/login");
+  }
   const { data } = await blogPost.getPostById(id);
   const postData = data.data;
 
