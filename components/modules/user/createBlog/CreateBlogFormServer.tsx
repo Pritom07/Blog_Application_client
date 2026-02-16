@@ -95,7 +95,7 @@ const CreateBlogFormServer = () => {
                   type="text"
                   id="tags"
                   name="tags"
-                  placeholder="Enter Related Tags"
+                  placeholder="Enter Related Tags e.g: next,level"
                   required
                 />
               </Field>
@@ -104,7 +104,7 @@ const CreateBlogFormServer = () => {
         </CardContent>
         <CardFooter>
           <Button form="CreateBlogFormServer" className="w-full cursor-pointer">
-            Create Post
+            Create Blog Post
           </Button>
         </CardFooter>
       </Card>
