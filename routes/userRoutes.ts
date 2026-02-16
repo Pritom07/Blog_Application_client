@@ -8,6 +8,10 @@ export const userRoutes: Array<admin_user_RoutesType> = [
         title: "Create Blog",
         url: "/dashboard/create-blog",
       },
+      {
+        title: "Blog History",
+        url: "/dashboard/blogHistory",
+      },
     ],
   },
 ];
