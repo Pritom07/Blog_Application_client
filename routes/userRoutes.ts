@@ -5,12 +5,8 @@ export const userRoutes: Array<admin_user_RoutesType> = [
     title: "Blog_Application",
     items: [
       {
-        title: "Blog Management",
-        url: "/blogmanagement",
-      },
-      {
-        title: "Write Blog",
-        url: "/write-blog",
+        title: "Create Blog",
+        url: "/dashboard/create-blog",
       },
     ],
   },

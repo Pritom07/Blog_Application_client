@@ -23,6 +23,7 @@ import { useEffect, useState } from "react";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { Role } from "@/constants/roles";
 
 interface MenuItem {
   title: string;
@@ -53,6 +54,8 @@ const Navbar = ({
   const router = useRouter();
   const [session, setSession] = useState<typeof data | null>(null);
   const { data } = authClient.useSession();
+
+  const ROLE = (data?.user as any)?.role as string | undefined;
 
   useEffect(() => {
     setSession(data);
@@ -88,6 +91,29 @@ const Navbar = ({
                     </NavigationMenuLink>
                   </NavigationMenuItem>
                 ))}
+                {ROLE === Role.ADMIN ? (
+                  <NavigationMenuItem>
+                    <NavigationMenuLink asChild>
+                      <Link
+                        href="/admin-dashboard"
+                        className="font-semibold text-[15px]"
+                      >
+                        Dashboard
+                      </Link>
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                ) : (
+                  <NavigationMenuItem>
+                    <NavigationMenuLink asChild>
+                      <Link
+                        href="/dashboard"
+                        className="font-semibold text-[15px]"
+                      >
+                        Dashboard
+                      </Link>
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                )}
               </NavigationMenuList>
             </NavigationMenu>
           </div>

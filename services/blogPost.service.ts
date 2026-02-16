@@ -28,6 +28,8 @@ export const blogPost = {
         config.next = { revalidate: option.revalidate };
       }
 
+      config.next = { ...config.next, tags: ["BlogPost"] };
+
       const res = await fetch(url.toString(), config);
       const posts = await res.json();
 

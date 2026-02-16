@@ -21,7 +21,7 @@ const BlogCard = ({ post }: { post: Post }) => {
         <CardHeader className="relative p-0">
           <AspectRatio ratio={1.27} className="overflow-hidden">
             <Image
-              src={thumbnail ?? "/default_thumbnail.png"}
+              src={thumbnail ? thumbnail : "/default_thumbnail.png"}
               alt={title}
               fill
               className="object-cover rounded-xl p-2"
