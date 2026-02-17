@@ -30,7 +30,7 @@ export default async function Home() {
     {},
   );
 
-  // parallel data fetching
+  // parallel data fetching requires less time
   const [allPosts, isFeaturedPosts] = await Promise.all([
     allPostsQuery,
     isFeaturedPostsQuery,
@@ -42,6 +42,8 @@ export default async function Home() {
   return (
     <div>
       {/* If image in your project's public folder then optimize image in these approach */}
+      {/* After Optimizing image in next.js must install `npm install sharp` */}
+
       <div className="relative h-96 w-full max-w-7xl mx-auto">
         <Image
           src={blogBanner}
@@ -53,6 +55,8 @@ export default async function Home() {
       </div>
 
       {/* If you want to use image with imgbb direct link then optimize image in these approach and also configure next.config.ts */}
+      {/* After Optimizing image in next.js must install `npm install sharp` */}
+
       {/* <div className="relative h-96 w-full max-w-7xl mx-auto">
         <Image
           src="https://i.ibb.co.com/d4xbcwXr/blog-Banner.jpg"
