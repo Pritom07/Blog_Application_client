@@ -7,9 +7,15 @@ export const env = createEnv({
     BACKEND_URL: z.url(),
     API_URL: z.url(),
   },
+
+  client: {
+    NEXT_PUBLIC_BACKEND_URL: z.url(),
+  },
+
   runtimeEnv: {
     FRONTEND_URL: process.env.FRONTEND_URL,
     BACKEND_URL: process.env.BACKEND_URL,
+    NEXT_PUBLIC_BACKEND_URL: process.env.NEXT_PUBLIC_BACKEND_URL,
     API_URL: process.env.API_URL,
   },
 });

@@ -4,18 +4,14 @@ import { userServices } from "@/services/user.service";
 import { Post } from "@/types/postType";
 import { redirect } from "next/navigation";
 
-//// pre-render as static only 3 (SSG) and remaining all others are SSR
+// Pre-render only first 3 posts (SSG), others SSR
 export async function generateStaticParams() {
   const { data } = await blogPost.getAllPosts({}, {});
   const posts = data.data;
 
-  if (posts === null) return [];
+  if (!posts) return [];
 
-  return posts
-    .map((post: Post) => ({
-      id: post.id,
-    }))
-    .slice(0, 3);
+  return posts.map((post: Post) => ({ id: post.id })).slice(0, 3);
 }
 
 const Detail_Post_Page = async ({
@@ -24,14 +20,16 @@ const Detail_Post_Page = async ({
   params: Promise<{ id: string }>;
 }) => {
   const { id } = await params;
+
   const { data: session } = await userServices.getSession();
   if (!session) {
     redirect("/login");
   }
+
   const { data } = await blogPost.getPostById(id);
   const postData = data.data;
 
-  if (postData === null) return {};
+  if (!postData) return null;
 
   return (
     <div>

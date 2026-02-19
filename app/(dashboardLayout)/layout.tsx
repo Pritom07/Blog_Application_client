@@ -1,13 +1,5 @@
 export const dynamic = "force-dynamic";
 import { AppSidebar } from "@/components/layout/app-sidebar";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,
@@ -16,6 +8,7 @@ import {
 } from "@/components/ui/sidebar";
 import { Role } from "@/constants/roles";
 import { userServices } from "@/services/user.service";
+import { redirect } from "next/navigation";
 
 const dashboardLayout = async ({
   adminSlot,
@@ -25,6 +18,9 @@ const dashboardLayout = async ({
   userSlot: React.ReactNode;
 }) => {
   const { data } = await userServices.getSession();
+  if (data === null) {
+    redirect("/login");
+  }
   const userRole = data.user.role;
 
   return (

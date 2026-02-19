@@ -69,6 +69,7 @@ export function LoginForm({
     await authClient.signIn.social({
       provider: "google",
       callbackURL: "http://localhost:3000",
+      // callbackURL: window.location.origin,
     });
   };
 
