@@ -69,13 +69,6 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
     },
   });
 
-  const signIn = async () => {
-    await authClient.signIn.social({
-      provider: "google",
-      callbackURL: "http://localhost:3000",
-    });
-  };
-
   return (
     <Card {...props}>
       <CardHeader>
@@ -180,12 +173,6 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
           className="w-full cursor-pointer"
         >
           Register
-        </Button>
-        <Button
-          onClick={signIn}
-          className="w-full mt-1 cursor-pointer bg-red-500 text-white font-semibold hover:bg-red-500"
-        >
-          Continue with Google
         </Button>
         <FieldDescription className="text-center">
           Already have an account? <a href="/login">Log In</a>

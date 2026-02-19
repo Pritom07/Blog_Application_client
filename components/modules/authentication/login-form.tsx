@@ -65,14 +65,6 @@ export function LoginForm({
     },
   });
 
-  const signIn = async () => {
-    await authClient.signIn.social({
-      provider: "google",
-      callbackURL: "http://localhost:3000",
-      // callbackURL: window.location.origin,
-    });
-  };
-
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
@@ -152,12 +144,6 @@ export function LoginForm({
             className="w-full cursor-pointer"
           >
             Log In
-          </Button>
-          <Button
-            onClick={signIn}
-            className="w-full text-white bg-red-500 font-semibold cursor-pointer hover:bg-red-500"
-          >
-            Continue with Google
           </Button>
           <FieldDescription className="text-center">
             Don't have an account? <a href="/signup">Sign Up</a>
