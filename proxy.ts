@@ -1,4 +1,4 @@
-//? It gets user session through userServices and using cookieStore.
+// ? It gets user session through userServices and using cookieStore.
 
 // import { NextRequest, NextResponse } from "next/server";
 // import { userServices } from "./services/user.service";
@@ -92,6 +92,7 @@
 //   ],
 // };
 
+//?phero deployment guideline
 import { NextRequest, NextResponse } from "next/server";
 
 export async function proxy(request: NextRequest) {

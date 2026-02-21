@@ -52,8 +52,8 @@ const Navbar = ({
   className,
 }: NavbarProps) => {
   const router = useRouter();
-  const { data } = authClient.useSession();
   const [session, setSession] = useState<typeof data | null>(null);
+  const { data } = authClient.useSession();
 
   const ROLE = (data?.user as any)?.role as string | undefined;
 
