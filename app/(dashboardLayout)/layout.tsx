@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/sidebar";
 import { Role } from "@/constants/roles";
 import { userServices } from "@/services/user.service";
-import { redirect } from "next/navigation";
 
 const dashboardLayout = async ({
   adminSlot,
@@ -19,10 +18,6 @@ const dashboardLayout = async ({
 }) => {
   const { data } = await userServices.getSession();
   const userRole = data.user.role;
-
-  if (data === null) {
-    redirect("/login");
-  }
 
   return (
     <div>
