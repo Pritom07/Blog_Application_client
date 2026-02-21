@@ -1,44 +1,44 @@
 // ? It gets user session through userServices and using cookieStore.
 
-// import { NextRequest, NextResponse } from "next/server";
-// import { userServices } from "./services/user.service";
-// import { Role } from "./constants/roles";
+import { NextRequest, NextResponse } from "next/server";
+import { userServices } from "./services/user.service";
+import { Role } from "./constants/roles";
 
-// export const proxy = async (request: NextRequest) => {
-//   let isAuthenticated = false;
-//   let userRole = Role.USER;
-//   const pathName = request.nextUrl.pathname;
+export const proxy = async (request: NextRequest) => {
+  let isAuthenticated = false;
+  let userRole = Role.USER;
+  const pathName = request.nextUrl.pathname;
 
-//   const { data } = await userServices.getSession();
+  const { data } = await userServices.getSession();
 
-//   if (data) {
-//     isAuthenticated = true;
-//     userRole = data.user.role;
-//   }
+  if (data) {
+    isAuthenticated = true;
+    userRole = data.user.role;
+  }
 
-//   if (!isAuthenticated) {
-//     return NextResponse.redirect(new URL("/login", request.url));
-//   }
+  if (!isAuthenticated) {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
 
-//   if (userRole === Role.ADMIN && pathName.startsWith("/dashboard")) {
-//     return NextResponse.redirect(new URL("/admin-dashboard", request.url));
-//   }
+  if (userRole === Role.ADMIN && pathName.startsWith("/dashboard")) {
+    return NextResponse.redirect(new URL("/admin-dashboard", request.url));
+  }
 
-//   if (userRole === Role.USER && pathName.startsWith("/admin-dashboard")) {
-//     return NextResponse.redirect(new URL("/dashboard", request.url));
-//   }
+  if (userRole === Role.USER && pathName.startsWith("/admin-dashboard")) {
+    return NextResponse.redirect(new URL("/dashboard", request.url));
+  }
 
-//   return NextResponse.next();
-// };
+  return NextResponse.next();
+};
 
-// export const config = {
-//   matcher: [
-//     "/dashboard",
-//     "/dashboard/:path*",
-//     "/admin-dashboard",
-//     "/admin-dashboard/:path*",
-//   ],
-// };
+export const config = {
+  matcher: [
+    "/dashboard",
+    "/dashboard/:path*",
+    "/admin-dashboard",
+    "/admin-dashboard/:path*",
+  ],
+};
 
 //? It gets user session through request.cookies.get("better-auth.session_token")
 
@@ -93,28 +93,28 @@
 // };
 
 //?phero deployment guideline
-import { NextRequest, NextResponse } from "next/server";
+// import { NextRequest, NextResponse } from "next/server";
 
-export async function proxy(request: NextRequest) {
-  const pathname = request.nextUrl.pathname;
+// export async function proxy(request: NextRequest) {
+//   const pathname = request.nextUrl.pathname;
 
-  // Skip middleware for verify-email route
-  if (pathname.startsWith("/verify-email")) {
-    return NextResponse.next();
-  }
+//   // Skip middleware for verify-email route
+//   if (pathname.startsWith("/verify-email")) {
+//     return NextResponse.next();
+//   }
 
-  // Check for session token in cookies
-  const sessionToken = request.cookies.get("better-auth.session_token");
+//   // Check for session token in cookies
+//   const sessionToken = request.cookies.get("better-auth.session_token");
 
-  //* User is not authenticated at all
-  if (!sessionToken) {
-    return NextResponse.redirect(new URL("/login", request.url));
-  }
+//   //* User is not authenticated at all
+//   if (!sessionToken) {
+//     return NextResponse.redirect(new URL("/login", request.url));
+//   }
 
-  // Allow access if session exists
-  return NextResponse.next();
-}
+//   // Allow access if session exists
+//   return NextResponse.next();
+// }
 
-export const config = {
-  matcher: ["/dashboard/:path*", "/admin-dashboard/:path*"],
-};
+// export const config = {
+//   matcher: ["/dashboard/:path*", "/admin-dashboard/:path*"],
+// };
