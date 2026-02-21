@@ -4,8 +4,8 @@ import { useRouter } from "next/navigation";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "../ui/sidebar";
 import { AppSidebar } from "./app-sidebar";
 import { useEffect, useState } from "react";
-import { authClient } from "@/lib/auth-client";
 import { Role } from "@/constants/roles";
+import { getSessionForUser } from "@/actions/blog.action";
 
 const DashboardLayout = ({
   adminSlot,
@@ -21,7 +21,7 @@ const DashboardLayout = ({
   useEffect(() => {
     const fetchSession = async () => {
       try {
-        const session = await authClient.getSession();
+        const session = await getSessionForUser();
 
         if (!session.data) {
           router.push("/login");
