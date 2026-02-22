@@ -51,7 +51,7 @@ export function LoginForm({
             position: "top-center",
           });
         }
-        router.push("/dashboard");
+        router.push("/");
         return toast.success("Login successfull", {
           id: toastId,
           position: "top-center",
